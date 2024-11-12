@@ -8,7 +8,7 @@ namespace MauiControls
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MauiPresentationControls());
+            MainPage = new NavigationPage(new MauiCommandControls());
         }
     }
 }

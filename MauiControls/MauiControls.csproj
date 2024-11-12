@@ -57,12 +57,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\android.png" />
+	  <None Remove="Resources\Images\android_os.svg" />
+	  <None Remove="Resources\Images\cao50.png" />
+	  <None Remove="Resources\Images\galo50.png" />
+	  <None Remove="Resources\Images\gato50.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\MauiCommandControls.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MauiPresentationControls.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
