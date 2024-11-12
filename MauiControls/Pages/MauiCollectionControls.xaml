@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiControls.Pages.MauiCollectionControls"
+             Title="Controlo de Coleções">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <!-- Galáxias com CarouselView -->
+            <Label Margin="10,10,10,10" Text="Galáxias" FontSize="Medium"/>
+
+            <CarouselView ItemsSource="{Binding Fotos}"
+                          IndicatorView="indicadorView"
+                          CurrentItemChanged="CarouselView_CurrentItemChanged">
+
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CarouselView.ItemsLayout>
+
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame CornerRadius="5"
+                                   Margin="10"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="CenterAndExpand">
+                                <StackLayout>
+                                    <Image Source="{Binding ImageUrl}"
+                                           Aspect="AspectFill"
+                                           HeightRequest="400"
+                                           WidthRequest="400"/>
+                                    <Label Text="{Binding Nome}"
+                                           FontSize="Medium"
+                                           HorizontalOptions="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <IndicatorView x:Name="indicadorView"
+                           IndicatorColor="Gray"
+                           IndicatorSize="20"
+                           VerticalOptions="Center"
+                           IndicatorsShape="Square"
+                           HorizontalOptions="CenterAndExpand"
+                           SelectedIndicatorColor="Blue"/>
+
+            <!-- Lista de Galáxias com ListView -->
+            <ListView x:Name="listaDeFotos"
+                      SeparatorColor="White"
+                      SeparatorVisibility="Default"
+                      SelectionMode="Single"
+                      ItemsSource="{Binding Fotos}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Nome}"
+                                   ImageSource="{Binding ImageUrl}"
+                                   TextColor="Black"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Picker de Cidades -->
+            <Picker x:Name="seletorDeCidades" Title="Selecionar uma cidade">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Roma</x:String>
+                        <x:String>Paris</x:String>
+                        <x:String>Lisboa</x:String>
+                        <x:String>Londres</x:String>
+                        <x:String>Budapeste</x:String>
+                        <x:String>Madrid</x:String>
+                        <x:String>Munique</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label Text="{Binding Source={x:Reference seletorDeCidades}, Path=SelectedItem}"/>
+
+            <!-- Tabela de Componentes -->
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Componentes">
+                        <SwitchCell Text="Ar Condicionado Digital" On="True"/>
+                        <SwitchCell Text="Alarme"/>
+                        <SwitchCell Text="Direção Eletro-Hidráulica"/>
+                        <SwitchCell x:Name="alertaCintoDeSeguranca" Text="Alerta do Cinto de Segurança" OnChanged="SeatbeltAlert_OnChanged"/>
+                        <TextCell Text="Total: 65.900,00 $" TextColor="Black"/>
+                        <EntryCell Placeholder="Digite o seu nome"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <Button x:Name="btnProximo" Text="Próximo" VerticalOptions="End"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
