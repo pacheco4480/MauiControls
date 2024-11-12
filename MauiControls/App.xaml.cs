@@ -1,4 +1,5 @@
 ﻿using MauiControls.Pages;
+using System.Collections.Generic;
 
 namespace MauiControls
 {
@@ -8,7 +9,7 @@ namespace MauiControls
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MauiCommandControls());
+            MainPage = new NavigationPage(new MauiSetValueControls());
         }
     }
 }
