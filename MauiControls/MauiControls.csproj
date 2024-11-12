@@ -74,6 +74,9 @@
 	  <MauiXaml Update="Pages\MauiCommandControls.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\MauiEditControls.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\MauiPresentationControls.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
